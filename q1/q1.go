@@ -3,14 +3,16 @@ package q1
 import "fmt"
 
 func twoSum(nums []int, target int) []int {
-	for k, v := range nums {
-		other := target - v
-		for i := k + 1; i < len(nums); i++ {
-			if other == nums[i] {
-				return []int{k, i}
-			}
+	m := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		other := target - nums[i]
+		f, ok := m[other]
+		if ok != false {
+			return []int{f, i}
 		}
+		m[nums[i]] = i
 	}
+
 	return nil
 }
 
