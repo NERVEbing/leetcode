@@ -1,26 +1,26 @@
-package q26
+package q27
 
 import "fmt"
 
-func removeDuplicates(nums []int) int {
+func removeElement(nums []int, val int) int {
 	if nums == nil || len(nums) == 0 {
 		return 0
 	}
 
 	n := 0
-	for i := 1; i < len(nums); i++ {
-		if nums[i] > nums[n] {
-			n++
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != val {
 			nums[n] = nums[i]
+			n++
 		}
 	}
 
-	return n + 1
+	return n
 }
 
 func Test() {
-	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
-	result := removeDuplicates(nums)
+	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
+	result := removeElement(nums, 2)
 	fmt.Println(result)
 	fmt.Println("-----")
 	for i := 0; i < result; i++ {
