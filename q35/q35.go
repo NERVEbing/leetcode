@@ -12,20 +12,18 @@ https://leetcode-cn.com/problems/search-insert-position/
 */
 
 func searchInsert(nums []int, target int) int {
-	if nums == nil || len(nums) == 0 {
+	l := len(nums)
+	if l == 0 {
 		return 0
 	}
 
-	for i := 0; i < len(nums); i++ {
+	for i := 0; i < l; i++ {
 		if nums[i] == target || nums[i] > target {
 			return i
 		}
-		if i+1 == len(nums) && nums[i] < target {
-			return i + 1
-		}
 	}
 
-	return 0
+	return l
 }
 
 func Test() {
